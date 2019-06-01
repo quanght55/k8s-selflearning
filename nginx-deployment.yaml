@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-stack
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      version: 1.15.8
+  template:
+    metadata:
+      labels: 
+        app: nginx
+        version: 1.15.8
+    spec:
+      containers:
+      - name: nginx-1-15-8
+        image: nginx:1.15.8
+        ports:
+          - containerPort: 80
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10 # Wait ten seconds for container to fully started before doing healthcheck
+          periodSeconds: 3

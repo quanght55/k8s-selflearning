@@ -1,0 +1,32 @@
+there are three components that interact with the Kubernetes node interface: node controller, kubelet, and kubectl.
+
+Applications running in the same Pod share the same IP address and port space (net‐work namespace), have the same hostname (UTS namespace), and can communicate using native interprocess communication channels over System V IPC or POSIX message queues (IPC namespace)
+
+Declarative configuration, where you describe desired state.
+Imperative configuration, where you simply take a series of actions to get desired state.
+
+Everything in Kubernetes is a declarative configuration object that represents the desired state of the system.
+  • Pods, or groups of containers, can group together container images developed by different teams into a single deployable unit.
+  • Kubernetes services provide load balancing, naming, and discovery to isolate one microservice from another.
+  • Namespaces provide isolation and access control, so that each microservice can control the degree to which other services interact with it.
+  • Ingress objects provide an easy-to-use frontend that can combine multiple microservices into a single externalized API surface area.
+
+Different Ways of Using Volumes with Pods:
+  Communication/synchronization
+  Cache
+  Persistent data
+  Mounting the host filesystem
+
+Annotations are key/value pairs designed to hold nonidentifying information
+Labels are key/value pairs designed to hold identifying information to Kubernetes objects
+
+Label keys can be broken down into two parts: an optional prefix and a name, separated by a slash.
+  The prefix, if specified, must be a DNS sub‐domain with a 253-character limit.
+  The key name is required and must be shorter than 63 characters.
+
+Service Object:
+  A Service object is a way to create a named label selector.
+  
+A ReplicaSet acts as a cluster-wide Pod manager, ensuring that the right types and number of Pods are running at all times.
+
+The reconciliation loop is constantly running, observing the current state of the world and taking action to try to make the observed state match the desired state
